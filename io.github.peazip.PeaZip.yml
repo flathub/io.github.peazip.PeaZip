@@ -93,8 +93,7 @@ modules:
       # i386
       - mkdir -p /app/lib/i386-linux-gnu
       # build
-      - lazbuild --widgetset=gtk2 --lazarusdir=/app/share/lazarus --build-all project_pea.lpi
-      - lazbuild --widgetset=gtk2 --lazarusdir=/app/share/lazarus --build-all project_peach.lpi
+      - lazbuild --widgetset=gtk2 --lazarusdir=/app/share/lazarus --build-all project_pea.lpi project_peach.lpi
       # install
       - install -Dm755 peazip -t /app/bin/PeaZip
        # Set altconf to let peazip save conf to ~/.PeaZip
@@ -105,6 +104,8 @@ modules:
       # install plugin formats
       - cp -vr /app/plugin/* -t /app/bin/PeaZip/res
       # install desktop integragion
+      - install -Dm755 install2dolphin.sh /app/bin/install2dolphin
+      - install -Dm644 peazip_dolphin.desktop -t /app/bin/PeaZip/res
       - rename peazip ${FLATPAK_ID} FreeDesktop_integration/{peazip.desktop,peazip.png}
       - desktop-file-install --dir=/app/share/applications/ --set-icon=${FLATPAK_ID} FreeDesktop_integration/${FLATPAK_ID}.desktop
       - install -Dm644 FreeDesktop_integration/${FLATPAK_ID}.png -t /app/share/icons/hicolor/256x256/apps
@@ -113,11 +114,19 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: 'https://github.com/peazip/PeaZip/releases/download/7.7.0/peazip-7.7.0.src.zip'
-        sha256: 9aadd78df2b48219833b5005a24afd6495aeb9f47e14384e85eb6c1b0b326cf2
+        url: 'https://github.com/peazip/PeaZip/releases/download/7.7.1/peazip-7.7.1.src.zip'
+        sha256: f8db220769c972824a608e97137af2cddf8c4212a72dd9a9089ae2aa432cf508
       
       - type: file
         path: io.github.peazip.PeaZip.metainfo.xml
+
+      - type: file
+        path: peazip_dolphin.desktop
+
+      - type: script
+        dest-filename: install2dolphin.sh
+        commands:
+          - install -Dm644 /app/bin/PeaZip/res/peazip_dolphin.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
 
     modules:
       - formats/p7zip.json

@@ -1,0 +1,37 @@
+# Dolphin Services Easy Quick Install Suite 
+# https://github.com/Intika-Linux-Plasmoid
+# Contact: intika@librefox.org
+# Modified by PizzaDude for Peazip Flatpak
+# Release: 2019 intika
+# License: GPL-3.0 
+# Version: 5.21
+
+[Desktop Entry]
+Type=Service
+Actions=peazipopen;peazipexthere;peazipextfolder;peazipadd;
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin,inode/directory,all/allfiles
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=Extract/Compress Peazip
+X-KDE-Submenu-Icon=io.github.peazip.PeaZip
+Version=5.21
+
+[Desktop Action peazipopen]
+Exec=flatpak run io.github.peazip.PeaZip -ext2browse %F
+Icon=io.github.peazip.PeaZip
+Name=Open PeaZip
+
+[Desktop Action peazipexthere]
+Exec=flatpak run io.github.peazip.PeaZip -ext2here %F
+Icon=io.github.peazip.PeaZip
+Name=Extract - Here
+
+[Desktop Action peazipextfolder]
+Exec=flatpak run io.github.peazip.PeaZip -ext2folder %F
+Icon=io.github.peazip.PeaZip
+Name=Extract - Here to new folder
+
+[Desktop Action peazipadd]
+Exec=flatpak run io.github.peazip.PeaZip -add2archive %F
+Icon=io.github.peazip.PeaZip
+Name=Compress With PeaZip (rar/zip/tar/etc)
