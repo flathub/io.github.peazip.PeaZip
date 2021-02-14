@@ -126,7 +126,7 @@ modules:
       - type: script
         dest-filename: install2dolphin.sh
         commands:
-          - install -Dm644 /app/bin/PeaZip/res/peazip_dolphin.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
+          - install -vDm644 /app/bin/PeaZip/res/peazip_dolphin.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
 
     modules:
       - formats/p7zip.json
