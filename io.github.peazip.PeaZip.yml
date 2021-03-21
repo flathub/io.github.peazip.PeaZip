@@ -5,6 +5,7 @@ sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
   - org.freedesktop.Sdk.Extension.toolchain-i386
+  - org.freedesktop.Sdk.Extension.freepascal
 command: peazip
 finish-args:
   - --socket=x11
@@ -30,59 +31,6 @@ add-extensions:
 
 modules:
   - shared-modules/gtk2/gtk2.json
-  
-  - name: lazarus
-    build-options:
-      env:
-        - PPC_CONFIG_PATH=/app/etc
-        - INSTALL_PREFIX=/app
-        - FPCDIR=/app/share/fpcsrc
-        - FPC_DIR=/app/share/fpcsrc
-        - LCL_PLATFORM=gtk2
-    buildsystem: simple
-    build-commands:
-      - find . -type f -iname makefile.fpc -exec fpcmake -Tall '{}' ';'
-      - make lazbuild
-      - make lcl
-      # As only lazbuild is maked, touch others to make install
-      - touch lazarus startlazarus
-      - make install
-    cleanup:
-      - '*'
-    sources: 
-      - type: archive
-        url: 'https://downloads.sourceforge.net/project/lazarus/Lazarus%20Zip%20_%20GZip/Lazarus%201.8.4/lazarus-1.8.4.tar.gz'
-        sha256: 5a9801ac341a322ad1fa104d373f154d8ab72ba0add1693d0dcc8d936e6c10e9
-      
-      - type: patch
-        path: Fix-lazbuild-random-crash.patch
-
-    modules:
-      - name: fpc
-        build-options:
-          env:
-            - fpcver=3.0.4
-        buildsystem: simple
-        build-commands:
-          - sed -i 's/PREFIX=\"$HOME\/fpc-$VERSION\"/PREFIX=\/app/g' install.sh
-          - rm -f demo.tar.gz doc-pdf.tar.gz
-          - ./install.sh
-          - /app/lib/fpc/${fpcver}/samplecfg /app/lib/fpc/${fpcver} /app/etc
-          - echo '-Fl/app/lib' >> /app/etc/fpc.cfg
-          # install fpc src from fpcbuild (required by lazarus)
-          - mkdir -p /app/share && mv fpcsrc /app/share/
-        cleanup:
-          - '*'
-        sources:
-          - type: archive
-            only-arches:
-              - x86_64
-            url: 'https://downloads.sourceforge.net/project/freepascal/Linux/3.0.4/fpc-3.0.4.x86_64-linux.tar'
-            sha256: 7e965baf13c9822a0ff39e7bbfa040bd5599e94d0f3338f1ac4efa989081fd77
-
-          - type: archive
-            url: 'https://downloads.sourceforge.net/project/freepascal/Source/3.0.4/fpcbuild-3.0.4.tar.gz'
-            sha256: f66514e6f2c2e4e1bccccb4d554c24b77682ed61c87811ae5dd210f421855e76
 
   - name: peazip
     build-options:
@@ -93,7 +41,8 @@ modules:
       # i386
       - mkdir -p /app/lib/i386-linux-gnu
       # build
-      - lazbuild --widgetset=gtk2 --lazarusdir=/app/share/lazarus --build-all project_pea.lpi project_peach.lpi
+      - . /usr/lib/sdk/freepascal/enable.sh &&
+        lazbuild --widgetset=gtk2 --build-all project_pea.lpi project_peach.lpi
       # install
       - install -Dm755 peazip -t /app/bin/PeaZip
        # Set altconf to let peazip save conf to ~/.PeaZip
@@ -114,8 +63,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: 'https://github.com/peazip/PeaZip/releases/download/7.7.1/peazip-7.7.1.src.zip'
-        sha256: f8db220769c972824a608e97137af2cddf8c4212a72dd9a9089ae2aa432cf508
+        url: 'https://github.com/peazip/PeaZip/releases/download/7.8.0/peazip-7.8.0.src.zip'
+        sha256: d66b2cc038f19a959d11996b0b03717f6162e1828c62a9ee0b5d16d339c1e944 
       
       - type: file
         path: io.github.peazip.PeaZip.metainfo.xml
