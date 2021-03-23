@@ -1,7 +1,7 @@
 app-id: io.github.peazip.PeaZip
-runtime: org.freedesktop.Platform
-runtime-version: '20.08'
-sdk: org.freedesktop.Sdk
+runtime: org.kde.Platform
+runtime-version: '5.15'
+sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
   - org.freedesktop.Sdk.Extension.toolchain-i386
@@ -30,7 +30,17 @@ add-extensions:
     no-autodownload: true
 
 modules:
-  - shared-modules/gtk2/gtk2.json
+#  - shared-modules/gtk2/gtk2.json
+
+  - name: qt5pas
+    config-opts:
+      - -after
+      - target.path=/app/lib
+    buildsystem: qmake
+    sources:
+      - type: shell
+        commands: 
+          - cp -r /usr/lib/sdk/freepascal/share/lazarus/lcl/interfaces/qt5/cbindings/. .
 
   - name: peazip
     build-options:
@@ -42,7 +52,7 @@ modules:
       - mkdir -p /app/lib/i386-linux-gnu
       # build
       - . /usr/lib/sdk/freepascal/enable.sh &&
-        lazbuild --widgetset=gtk2 --build-all project_pea.lpi project_peach.lpi
+        lazbuild --widgetset=qt5 --build-all --max-process-count=1 project_pea.lpi project_peach.lpi
       # install
       - install -Dm755 peazip -t /app/bin/PeaZip
        # Set altconf to let peazip save conf to ~/.PeaZip
@@ -64,7 +74,7 @@ modules:
     sources:
       - type: archive
         url: 'https://github.com/peazip/PeaZip/releases/download/7.8.0/peazip-7.8.0.src.zip'
-        sha256: d66b2cc038f19a959d11996b0b03717f6162e1828c62a9ee0b5d16d339c1e944 
+        sha256: 84b5379e712240ee9f45d63a520e006af6505508fff2a56a899b798fc4e208ef
       
       - type: file
         path: io.github.peazip.PeaZip.metainfo.xml
