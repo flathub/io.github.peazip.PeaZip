@@ -75,6 +75,11 @@ modules:
       - type: archive
         url: 'https://github.com/peazip/PeaZip/releases/download/7.8.0/peazip-7.8.0.src.zip'
         sha256: 84b5379e712240ee9f45d63a520e006af6505508fff2a56a899b798fc4e208ef
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/peazip/PeaZip/releases/latest
+          version-pattern: '.tag_name'
+          url-pattern: '.assets[] | select(.name=="peazip-" + $version + ".src.zip") | .browser_download_url'
       
       - type: file
         path: io.github.peazip.PeaZip.metainfo.xml
