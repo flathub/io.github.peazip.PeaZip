@@ -78,8 +78,8 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
-          version-pattern: '.tag_name'
-          url-pattern: '.assets[] | select(.name=="peazip-" + $version + ".src.zip") | .browser_download_url'
+          version-query: '.tag_name'
+          url-query: '.assets[] | select(.name=="peazip-" + $version + ".src.zip") | .browser_download_url'
       
       - type: file
         path: io.github.peazip.PeaZip.metainfo.xml
