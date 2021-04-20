@@ -5,7 +5,9 @@
         "g++ $CFLAGS src/balz.cpp -o balz",
         "install -Dm755 balz -t /app/plugin/quad"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "archive",

@@ -5,7 +5,9 @@
     "build-commands": [
         "install -Dm755 brotli -t /app/plugin/brotli"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "git",
@@ -14,5 +16,3 @@
         }
     ]
 }
-
-

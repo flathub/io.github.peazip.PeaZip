@@ -6,7 +6,9 @@
         "install -Dm755 zpaq -t /app/plugin/zpaq",
         "install -Dm644 readme.txt -t /app/plugin/zpaq"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "archive",
@@ -15,5 +17,3 @@
         }
     ]
 }
-
-

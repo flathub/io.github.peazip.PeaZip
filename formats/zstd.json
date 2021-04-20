@@ -5,7 +5,9 @@
     "build-commands": [
         "install -Dm755 programs/zstd -t /app/plugin/zstd"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "git",

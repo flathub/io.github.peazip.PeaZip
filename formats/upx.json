@@ -2,11 +2,15 @@
     "name": "upx",
     "no-autogen": true,
     "no-make-install": true,
-    "make-args": ["all"],
+    "make-args": [
+        "all"
+    ],
     "build-commands": [
         "install -Dm755 src/upx.out /app/plugin/upx/upx"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "archive",
@@ -19,9 +23,15 @@
             "name": "ucl",
             "build-options": {
                 "cflags": "-std=gnu90 -fPIC",
-                "config-opts": ["--prefix=/app", "--enable-shared", "--disable-static"]
+                "config-opts": [
+                    "--prefix=/app",
+                    "--enable-shared",
+                    "--disable-static"
+                ]
             },
-            "cleanup": ["/include"],
+            "cleanup": [
+                "/include"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -32,5 +42,3 @@
         }
     ]
 }
-
-

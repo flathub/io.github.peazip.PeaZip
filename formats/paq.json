@@ -1,7 +1,9 @@
 {
     "name": "paq",
     "buildsystem": "simple",
-    "only-arches": ["x86_64"],
+    "only-arches": [
+        "x86_64"
+    ],
     "build-commands": [
         "for ver in o l jd f; do unzip paq8${ver}.zip -d ${ver}; done",
         "sed -i 's/Mixer::p/p/g' jd/paq8jd.cpp f/paq8f.cpp",
@@ -9,7 +11,9 @@
         "for ver in o l jd f; do g++ $CFLAGS -DUNIX ${ver}/paq8${ver}.cpp asm${ver}.o -o paq8${ver}; done",
         "install -Dm755 paq8o paq8l paq8jd paq8f -t /app/plugin/paq"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "file",
@@ -36,8 +40,12 @@
     "modules": [
         {
             "name": "yasm",
-            "build-commands": ["make check"],
-            "cleanup": ["*"],
+            "build-commands": [
+                "make check"
+            ],
+            "cleanup": [
+                "*"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -45,7 +53,6 @@
                     "sha256": "3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f"
                 }
             ]
-
         }
     ]
 }

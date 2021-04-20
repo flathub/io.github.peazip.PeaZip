@@ -2,11 +2,18 @@
     "name": "p7zip",
     "no-autogen": true,
     "no-make-install": true,
-    "make-args": ["7z","7za","7zr","sfx"],
+    "make-args": [
+        "7z",
+        "7za",
+        "7zr",
+        "sfx"
+    ],
     "build-commands": [
         "mkdir -p /app/plugin && cp -r bin /app/plugin/7z"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "git",

@@ -39,8 +39,9 @@ modules:
     buildsystem: qmake
     sources:
       - type: shell
-        commands: 
-          - cp -r /usr/lib/sdk/freepascal/share/lazarus/lcl/interfaces/qt5/cbindings/. .
+        commands:
+          - cp -r /usr/lib/sdk/freepascal/share/lazarus/lcl/interfaces/qt5/cbindings/.
+            .
 
   - name: peazip
     build-options:
@@ -51,8 +52,8 @@ modules:
       # i386
       - mkdir -p /app/lib/i386-linux-gnu
       # build
-      - . /usr/lib/sdk/freepascal/enable.sh &&
-        lazbuild --widgetset=qt5 --build-all --max-process-count=1 project_pea.lpi project_peach.lpi
+      - . /usr/lib/sdk/freepascal/enable.sh && lazbuild --widgetset=qt5 --build-all
+        --max-process-count=1 project_pea.lpi project_peach.lpi
       # install
       - install -Dm755 peazip -t /app/bin/PeaZip
        # Set altconf to let peazip save conf to ~/.PeaZip
@@ -66,21 +67,22 @@ modules:
       - install -Dm755 install2dolphin.sh /app/bin/install2dolphin
       - install -Dm644 peazip_dolphin.desktop -t /app/bin/PeaZip/res
       - rename peazip ${FLATPAK_ID} FreeDesktop_integration/{peazip.desktop,peazip.png}
-      - desktop-file-install --dir=/app/share/applications/ --set-icon=${FLATPAK_ID} FreeDesktop_integration/${FLATPAK_ID}.desktop
+      - desktop-file-install --dir=/app/share/applications/ --set-icon=${FLATPAK_ID}
+        FreeDesktop_integration/${FLATPAK_ID}.desktop
       - install -Dm644 FreeDesktop_integration/${FLATPAK_ID}.png -t /app/share/icons/hicolor/256x256/apps
       - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo
     cleanup:
       - /share/lazarus
     sources:
       - type: archive
-        url: 'https://github.com/peazip/PeaZip/releases/download/7.8.0/peazip-7.8.0.src.zip'
-        sha256: 84b5379e712240ee9f45d63a520e006af6505508fff2a56a899b798fc4e208ef
+        url: https://github.com/peazip/PeaZip/releases/download/7.9.0/peazip-7.9.0.src.zip
+        sha256: b2e80860035095e353608c85a542b39458d07fa2ef81ca9eb619da0041df1e94
         x-checker-data:
           type: json
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
-          version-query: '.tag_name'
-          url-query: '.assets[] | select(.name=="peazip-" + $version + ".src.zip") | .browser_download_url'
-      
+          version-query: .tag_name
+          url-query: .assets[] | select(.name=="peazip-" + $version + ".src.zip")
+            | .browser_download_url
       - type: file
         path: io.github.peazip.PeaZip.metainfo.xml
 
@@ -98,11 +100,11 @@ modules:
       - formats/paq.json
 
       - formats/zpaq.json
- 
+
       - formats/zstd.json
 
       - formats/upx.json
- 
+
       - formats/brotli.json
 
       - formats/quad.json

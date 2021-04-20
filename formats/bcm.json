@@ -5,7 +5,9 @@
         "g++ $CFLPAGS divsufsort.c bcm.cpp -o bcm",
         "install -Dm755 bcm -t /app/plugin/quad"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "git",

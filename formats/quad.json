@@ -5,7 +5,9 @@
         "g++ $CFLAGS quad.cpp -o quad",
         "install -Dm755 quad -t /app/plugin/quad"
     ],
-    "cleanup": ["/plugin"],
+    "cleanup": [
+        "/plugin"
+    ],
     "sources": [
         {
             "type": "archive",
