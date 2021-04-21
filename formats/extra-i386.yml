@@ -10,7 +10,7 @@ cleanup:
 sources:
   - type: archive
     url: https://downloads.sourceforge.net/project/freearc/FreeArc/FreeArc%200.51/FreeArc-0.51-linux-i386.tar.bz2
-    sha256: 9671d829a3961abc064721d25f10d109f7830cbd0d9dd9a6f6be72b3bbade6eb
+    sha256: 251a85b3bac687974f360d3796048c20ded3bf0bd69e0d1cfd1db23d013f89ed
 
 x-compat-i386-opts: &compat_i386_opts
   prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
