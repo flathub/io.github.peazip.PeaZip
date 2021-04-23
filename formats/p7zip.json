@@ -18,7 +18,7 @@
         {
             "type": "git",
             "url": "https://github.com/jinfeihan57/p7zip.git",
-            "tag": "v17.02"
+            "commit": "ba539b408cb93830463d9ecdf6537cf623c5270c"
         }
     ]
 }
