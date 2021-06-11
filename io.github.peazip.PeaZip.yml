@@ -111,6 +111,6 @@ modules:
 
       - formats/balz.json
 
-      - formats/bcm.json
+      #- formats/bcm.json
       # freearc lpaq      
       - formats/extra-i386.yml
