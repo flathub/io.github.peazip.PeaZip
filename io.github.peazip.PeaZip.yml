@@ -75,8 +75,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: https://github.com/peazip/PeaZip/releases/download/7.9.0/peazip-7.9.0.src.zip
-        sha256: b2e80860035095e353608c85a542b39458d07fa2ef81ca9eb619da0041df1e94
+        url: https://github.com/peazip/PeaZip/releases/download/8.0.0/peazip-8.0.0.src.zip
+        sha256: 2b3f24b035601df713746f2b7abcd2fdecb382117d81cf828deea1faaa2a3c32
         x-checker-data:
           type: json
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
@@ -111,6 +111,6 @@ modules:
 
       - formats/balz.json
 
-      - formats/bcm.json
+      #- formats/bcm.json
       # freearc lpaq      
       - formats/extra-i386.yml
