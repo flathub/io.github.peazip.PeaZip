@@ -3,14 +3,7 @@ only-arches:
   - x86_64
 buildsystem: simple
 build-commands:
-  - mkdir -p /app/plugin/arc
-  - cp -rv {bin,cfg,lib}/* /app/plugin/arc
-cleanup:
-  - /plugin
-sources:
-  - type: archive
-    url: https://downloads.sourceforge.net/project/freearc/FreeArc/FreeArc%200.51/FreeArc-0.51-linux-i386.tar.bz2
-    sha256: 9671d829a3961abc064721d25f10d109f7830cbd0d9dd9a6f6be72b3bbade6eb
+  - exit 0
 
 x-compat-i386-opts: &compat_i386_opts
   prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
@@ -23,31 +16,6 @@ x-compat-i386-opts: &compat_i386_opts
 
 # ncurses,gmp need by arc
 modules:
-  - name: lpaq
-    build-options: *compat_i386_opts
-    buildsystem: simple
-    build-commands:
-      - for ver in 1 5 8; do unzip -d $ver lpaq${ver}.zip; done
-      - $CXX $CFLAGS 1/lpaq1v2.cpp -o lpaq1
-      - $CXX $CFLAGS 5/lpaq5.cpp -o lpaq5
-      - $CXX $CFLAGS 8/lpaq8.cpp -o lpaq8
-      - install -Dm755 lpaq1 lpaq5 lpaq8 -t /app/plugin/lpaq
-    cleanup:
-      - /plugin
-    sources:
-      - type: file
-        dest-filename: lpaq1.zip
-        url: http://mattmahoney.net/dc/lpaq1v2.zip
-        sha256: 4a9ee72719b8bfaf490b7329248e2cbb33eafac919238bcd9388bc5126b6209a
-
-      - type: file
-        url: http://mattmahoney.net/dc/lpaq5.zip
-        sha256: af6b1039377f490bfc071ab5a33f87f2775c73fa5a6af3d73ced3d4e66aba2dd
-
-      - type: file
-        url: http://mattmahoney.net/dc/lpaq8.zip
-        sha256: ea43474526f13338cbb50ce3fbd974a0d088d77a3b73d42010ad11fb89a498b2
-
   - name: ncurses
     build-options: *compat_i386_opts
     config-opts:
