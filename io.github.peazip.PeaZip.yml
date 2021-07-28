@@ -61,8 +61,6 @@ modules:
       - cp -r res /app/bin/PeaZip/res
       - install -Dm755 pea -t /app/bin/PeaZip/res
       - ln -s /app/bin/PeaZip/peazip /app/bin/
-      # install plugin formats
-      - cp -vr /app/plugin/* -t /app/bin/PeaZip/res
       # install desktop integragion
       - install -Dm755 install2dolphin.sh /app/bin/install2dolphin
       - install -Dm644 peazip_dolphin.desktop -t /app/bin/PeaZip/res
@@ -75,8 +73,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: https://github.com/peazip/PeaZip/releases/download/8.0.0/peazip-8.0.0.src.zip
-        sha256: 2b3f24b035601df713746f2b7abcd2fdecb382117d81cf828deea1faaa2a3c32
+        url: https://github.com/peazip/PeaZip/releases/download/8.1.0/peazip-8.1.0.src.zip
+        sha256: d5093539ff70d3f58f599f146385b891704cb3e3dd6f325f0b76b5043d8a0c60
         x-checker-data:
           type: json
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
@@ -94,23 +92,32 @@ modules:
         commands:
           - install -vDm644 /app/bin/PeaZip/res/peazip_dolphin.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
 
+  - name: peazip-addition
+    cleanup:
+      - /include
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/bin/PeaZip/res/{7z,zstd,brotli}
+
+      - ln -vs /app/lib/p7zip/* /app/bin/PeaZip/res/7z/
+
+      - ln -vs /app/bin/zstd /app/bin/PeaZip/res/zstd/
+
+      - ln -vs /app/bin/brotli /app/bin/PeaZip/res/brotli/
+
+      - 7z x addition.7z
+      - cp -vr peazip*/* -t /app/bin/PeaZip/res
+    sources:
+      - type: file
+        dest-filename: addition.7z
+        url: 'https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip_additional_formats_plugin-LINUX-3.7z'
+        sha256: 38d94bf794f18d88a0c88f8261614d4948cbb2a6d6b78ebd0cb034704c86e1c4
+
     modules:
-      - formats/p7zip.json
-
-      - formats/paq.json
-
-      - formats/zpaq.json
+      - formats/p7zip.yml
 
       - formats/zstd.json
 
-      - formats/upx.json
-
       - formats/brotli.json
 
-      - formats/quad.json
-
-      - formats/balz.json
-
-      #- formats/bcm.json
-      # freearc lpaq      
       - formats/extra-i386.yml

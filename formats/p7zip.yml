@@ -1,0 +1,18 @@
+name: p7zip
+no-autogen: true
+make-args:
+  - 7z
+  - 7za
+  - 7zr
+  - sfx
+cleanup:
+  - /man
+  - /share
+sources:
+  - type: git
+    url: https://github.com/jinfeihan57/p7zip.git
+    commit: 0b5b1b1a866d0e41cb7945e60a32262874e724aa
+
+  - type: shell
+    commands: 
+    - sed -i 's|/usr/local|/app|g' makefile.common
