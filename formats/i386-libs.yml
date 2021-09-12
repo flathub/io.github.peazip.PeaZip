@@ -1,4 +1,4 @@
-name: extra-i386
+name: i386-libs
 only-arches:
   - x86_64
 buildsystem: simple

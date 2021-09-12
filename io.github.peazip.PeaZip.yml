@@ -94,26 +94,12 @@ modules:
           - install -vDm644 /app/bin/PeaZip/res/peazip_dolphin.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
 
   - name: peazip-addition
-    cleanup:
-      - /include
     buildsystem: simple
     build-commands:
       - mkdir -p /app/bin/PeaZip/res/{7z,zstd,brotli}
-
-      - ln -vs /app/lib/p7zip/* /app/bin/PeaZip/res/7z/
-
-      - ln -vs /app/bin/zstd /app/bin/PeaZip/res/zstd/
-
-      - ln -vs /app/bin/brotli /app/bin/PeaZip/res/brotli/
-
-      - 7z x addition.7z
-      - cp -vr peazip*/* -t /app/bin/PeaZip/res
-    sources:
-      - type: file
-        dest-filename: addition.7z
-        url: https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip_additional_formats_plugin-LINUX-3.7z
-        sha256: 38d94bf794f18d88a0c88f8261614d4948cbb2a6d6b78ebd0cb034704c86e1c4
-
+      - ln -vs -t /app/bin/PeaZip/res/7z     /app/lib/p7zip/* 
+      - ln -vs -t /app/bin/PeaZip/res/zstd   /app/bin/zstd
+      - ln -vs -t /app/bin/PeaZip/res/brotli /app/bin/brotli
     modules:
       - formats/p7zip.yml
 
@@ -121,4 +107,36 @@ modules:
 
       - formats/brotli.json
 
-      - formats/extra-i386.yml
+  - name: peazip-addition-extra
+    cleanup:
+      - /include
+    buildsystem: simple
+    build-commands:
+      - ln -vs -t /app/bin/PeaZip/res /app/extra/res/{arc,lpaq,paq,quad,upx,zpaq,unace}
+      - install -Dm755 apply_extra -t /app/bin
+    sources:
+      - type: script
+        dest-filename: apply_extra
+        commands:
+          - 7z x addition.7z
+          - mv peazip* res
+          - rm addition.7z
+
+          - 7z x unace.deb && tar -xf data.tar
+          - mv {usr/local/share/PeaZip/res/unace, res/unace}
+          - rm -r usr data.tar unace.deb
+
+      - type: extra-data
+        filename: addition.7z
+        url: https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip_additional_formats_plugin-LINUX-3.7z
+        sha256: 38d94bf794f18d88a0c88f8261614d4948cbb2a6d6b78ebd0cb034704c86e1c4
+        size: 1722938
+
+      - type: extra-data
+        filename: unace.deb
+        url: https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20UNACE%20Plugin/peazip-unace-plugin-linux_3-2_all.deb
+        sha256: 66f160322820799a7a803aeaf0f73cf367350667ea7f5f76e962de03cf6b0c22
+        size: 203740
+
+    modules:
+      - formats/i386-libs.yml
