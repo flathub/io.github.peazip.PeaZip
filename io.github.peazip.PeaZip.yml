@@ -73,8 +73,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: https://github.com/peazip/PeaZip/releases/download/8.1.0/peazip-8.1.0.src.zip
-        sha256: d5093539ff70d3f58f599f146385b891704cb3e3dd6f325f0b76b5043d8a0c60
+        url: https://github.com/peazip/PeaZip/releases/download/8.2.0/peazip-8.2.0.src.zip
+        sha256: bc8c27e95d2e18eec8f2107d427b34fc378408316c1a97728614fb12edbfa7d4
         x-checker-data:
           type: json
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
@@ -110,7 +110,7 @@ modules:
     sources:
       - type: file
         dest-filename: addition.7z
-        url: 'https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip_additional_formats_plugin-LINUX-3.7z'
+        url: https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip_additional_formats_plugin-LINUX-3.7z
         sha256: 38d94bf794f18d88a0c88f8261614d4948cbb2a6d6b78ebd0cb034704c86e1c4
 
     modules:
