@@ -46,9 +46,6 @@ modules:
             .
 
   - name: peazip
-    build-options:
-      env:
-        - PPC_CONFIG_PATH=/app/etc
     buildsystem: simple
     build-commands:
       # i386
@@ -64,8 +61,8 @@ modules:
       - install -Dm755 pea -t /app/bin/PeaZip/res
       - ln -s /app/bin/PeaZip/peazip /app/bin/
     post-install:
-      - install -Dm755 install2dolphin.sh /app/bin/install2dolphin
-      - install -Dm644 peazip_dolphin.desktop -t /app/bin/PeaZip/res
+      - install -Dm755 install2dolphin.sh     /app/bin/install2dolphin
+      - install -Dm644 -t /app/bin/PeaZip/res peazip_dolphin.desktop
       - cd res/batch/freedesktop_integration && 
         desktop-file-install --dir=/app/share/applications/ --set-icon=${FLATPAK_ID} peazip.desktop &&
         install -Dm644 peazip.png -t /app/share/icons/hicolor/256x256/apps
@@ -118,12 +115,12 @@ modules:
       - type: script
         dest-filename: apply_extra
         commands:
-          - 7z x addition.7z
+          - 7z x addition.7z > /dev/null
           - mv peazip* res
           - rm addition.7z
 
-          - 7z x unace.deb && tar -xf data.tar
-          - mv {usr/local/share/PeaZip/res/unace, res/unace}
+          - 7z x unace.deb > /dev/null && tar -xf data.tar
+          - install -D -t res/unace usr/local/share/PeaZip/res/unace/*
           - rm -r usr data.tar unace.deb
 
       - type: extra-data
