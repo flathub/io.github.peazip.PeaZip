@@ -25,6 +25,7 @@ modules:
     cleanup:
       - /bin
       - /include
+      - /share
       - '*.a'
     sources:
       - type: archive

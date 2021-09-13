@@ -91,6 +91,8 @@ modules:
           - install -vDm644 /app/bin/PeaZip/res/peazip_dolphin.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
 
   - name: peazip-addition
+    cleanup:
+      - /share
     buildsystem: simple
     build-commands:
       - mkdir -p /app/bin/PeaZip/res/{7z,zstd,brotli}
@@ -99,9 +101,7 @@ modules:
       - ln -vs -t /app/bin/PeaZip/res/brotli /app/bin/brotli
     modules:
       - formats/p7zip.yml
-
       - formats/zstd.json
-
       - formats/brotli.json
 
   - name: peazip-addition-extra
