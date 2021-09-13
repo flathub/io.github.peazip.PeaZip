@@ -14,5 +14,5 @@ sources:
     commit: 0b5b1b1a866d0e41cb7945e60a32262874e724aa
 
   - type: shell
-    commands: 
-    - sed -i 's|/usr/local|/app|g' makefile.common
+    commands:
+      - sed -i 's|/usr/local|/app|g' makefile.common
