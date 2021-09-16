@@ -125,8 +125,8 @@ modules:
       - type: extra-data
         filename: addition.7z
         url: https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip_additional_formats_plugin-LINUX-3.7z
-        sha256: 251a85b3bac687974f360d3796048c20ded3bf0bd69e0d1cfd1db23d013f89ed
-        size: 746
+        sha256: 38d94bf794f18d88a0c88f8261614d4948cbb2a6d6b78ebd0cb034704c86e1c4
+        size: 1722938
 
       - type: extra-data
         filename: unace.deb
