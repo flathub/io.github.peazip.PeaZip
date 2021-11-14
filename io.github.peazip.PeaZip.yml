@@ -1,6 +1,6 @@
 app-id: io.github.peazip.PeaZip
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
@@ -72,8 +72,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: https://github.com/peazip/PeaZip/releases/download/8.2.0/peazip-8.2.0.src.zip
-        sha256: bc8c27e95d2e18eec8f2107d427b34fc378408316c1a97728614fb12edbfa7d4
+        url: https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip-8.3.0.src.zip
+        sha256: fc81487fca46aca0fdbe05bc5ed8c84069f09d4afd4bc45b1adf9dfeb56acd9b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
