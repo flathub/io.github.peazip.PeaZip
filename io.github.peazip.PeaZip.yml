@@ -83,7 +83,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip-8.3.0.src.zip
-        sha256: fc81487fca46aca0fdbe05bc5ed8c84069f09d4afd4bc45b1adf9dfeb56acd9b
+        sha256: 5f76106b8ec2e93ea68d9482b13ed5edc9c3d962fca93a9dcc42e3f0d05b1ae8
         x-checker-data:
           type: json
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
