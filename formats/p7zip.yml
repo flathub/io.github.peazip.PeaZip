@@ -13,6 +13,7 @@ sources:
     url: https://github.com/jinfeihan57/p7zip.git
     tag: v17.02
     disable-fsckobjects: true
+    disable-shallow-clone: true
 
   - type: shell
     commands:
