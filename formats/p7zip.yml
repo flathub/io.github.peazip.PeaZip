@@ -11,8 +11,12 @@ cleanup:
 sources:
   - type: git
     url: https://github.com/jinfeihan57/p7zip.git
-    commit: 0b5b1b1a866d0e41cb7945e60a32262874e724aa
+    tag: v17.02
+    disable-fsckobjects: true
+    disable-shallow-clone: true
 
   - type: shell
     commands:
+      - git cherry-pick --no-commit 7ac8f8d3e8a793104e887f67c021eadc419a409f
       - sed -i 's|/usr/local|/app|g' makefile.common
+      - chmod 755 install.sh
