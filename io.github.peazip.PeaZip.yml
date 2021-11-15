@@ -22,16 +22,10 @@ finish-args:
   - --talk-name=com.canonical.AppMenu.Registrar
   # i386
   - --allow=multiarch
-  - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
 
 add-extensions:
-  org.freedesktop.Platform.Compat.i386:
+  io.github.peazip.PeaZip.i386:
     directory: lib/i386-linux-gnu
-    version: '21.08'
-
-  org.freedesktop.Platform.Compat.i386.Debug:
-    directory: lib/debug/lib/i386-linux-gnu
-    version: '21.08'
     no-autodownload: true
 
 build-options:
@@ -59,8 +53,6 @@ modules:
         lazbuild --widgetset=qt5 --build-all
           --max-process-count=1 project_pea.lpi project_peach.lpi
     post-install:
-      # i386
-      - mkdir -p $FLATPAK_DEST/lib/i386-linux-gnu
       # bin
       - mkdir -p $FLATPAK_DEST/bin
       - install -Dm755 -t $PEA_DIR peazip pea
@@ -69,12 +61,16 @@ modules:
       - rm -r res/{conf,portable} && cp -r res $PEA_DIR/res
       # dolphin
       - install -Dm755 install2dolphin.sh              $FLATPAK_DEST/bin/install2dolphin
-      - install -Dm644 -t $PEA_DIR/res                 peazip_dolphin.desktop
+      - |
+        cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
+        sed -i  "s/Exec=peazip/Exec=flatpak run --file-forwarding $FLATPAK_ID/g" *.desktop
+        sed -Ei "s/ (%.)/ @@ \1 @@/g"                                            *.desktop
+        sed -i  "s/Icon=peazip/Icon=$FLATPAK_ID/g"                               *.desktop
       # desktop files
-      - install -Dm644 -t $FLATPAK_DEST/share/metainfo peazip.appdata.xml 
+      - install -Dm644 -t $FLATPAK_DEST/share/metainfo                   peazip.appdata.xml 
       - | 
         cd res/share/batch/freedesktop_integration
-        sed -i "s/Icon=peazip_/Icon=${FLATPAK_ID}./g" peazip.desktop
+        sed -i "s/Icon=peazip_/Icon=${FLATPAK_ID}./g"                    peazip.desktop
         desktop-file-install --dir=$FLATPAK_DEST/share/applications      peazip.desktop
         install -Dm644 -t $FLATPAK_DEST/share/icons/hicolor/256x256/apps peazip.png peazip_add.png peazip_extract.png
       - rename "peazip_" "${FLATPAK_ID}." $FLATPAK_DEST/share/icons/hicolor/*/*/*.png
@@ -83,7 +79,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip-8.3.0.src.zip
-        sha256: 5f76106b8ec2e93ea68d9482b13ed5edc9c3d962fca93a9dcc42e3f0d05b1ae8
+        sha256: 9d43dc03a65cb9b1732f185251f5a2067941ad7b28e3272a3d6484d6384c18cb
         x-checker-data:
           type: json
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
@@ -93,13 +89,12 @@ modules:
       - type: file
         path: peazip.appdata.xml
 
-      - type: file
-        path: peazip_dolphin.desktop
-
       - type: script
         dest-filename: install2dolphin.sh
         commands:
-          - install -vDm644 $PEA_DIR/res/peazip_dolphin.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
+          - PEA_DIR=/app/lib/peazip
+          - cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
+          - install -vDm644 peazip*.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
 
   - name: peazip-addition
     cleanup:
@@ -115,11 +110,15 @@ modules:
       - formats/zstd.json
       - formats/brotli.json
 
+  - peazip.i386.yml
+
   - name: peazip-addition-extra
+    only-arches: [x86_64]
     cleanup:
       - /include
     buildsystem: simple
     build-commands:
+      - mkdir -p $FLATPAK_DEST/lib/i386-linux-gnu
       - ln -vs -t $PEA_DIR/res/bin $FLATPAK_DEST/extra/res/{arc,lpaq,paq,quad,upx,zpaq,unace}
       - install -Dm755 apply_extra -t $FLATPAK_DEST/bin
     sources:
@@ -145,6 +144,3 @@ modules:
         url: https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20UNACE%20Plugin/peazip-unace-plugin-linux_3-2_all.deb
         sha256: 66f160322820799a7a803aeaf0f73cf367350667ea7f5f76e962de03cf6b0c22
         size: 203740
-
-    modules:
-      - formats/i386-libs.yml
