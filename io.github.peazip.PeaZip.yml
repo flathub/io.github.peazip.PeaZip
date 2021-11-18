@@ -24,8 +24,11 @@ finish-args:
   - --allow=multiarch
 
 add-extensions:
-  io.github.peazip.PeaZip.i386:
-    directory: lib/i386-linux-gnu
+  io.github.peazip.PeaZip.Addon:
+    directory: Addon
+    merge-dirs: lib;formats;extra
+    add-ld-path: lib
+    subdirectories: true
     no-autodownload: true
 
 build-options:
