@@ -121,6 +121,7 @@ modules:
       - /include
     buildsystem: simple
     build-commands:
+      - mkdir -p $FLATPAK_DEST/Addon
       - mkdir -p $FLATPAK_DEST/lib/i386-linux-gnu
       - ln -vs -t $PEA_DIR/res/bin $FLATPAK_DEST/extra/res/{arc,lpaq,paq,quad,upx,zpaq,unace}
       - install -Dm755 apply_extra -t $FLATPAK_DEST/bin
