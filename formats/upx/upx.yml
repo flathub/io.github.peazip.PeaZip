@@ -18,7 +18,6 @@ modules:
     build-options:
       cflags: "-std=gnu90 -fPIC"
       config-opts:
-        - "--prefix=/app"
         - "--enable-shared"
         - "--disable-static"
     cleanup:
@@ -33,3 +32,6 @@ modules:
         path: ucl-Fix-double-free.patch
       - type: patch
         path: ucl-Fix-memory-errors.patch
+      - type: shell
+        commands:
+          - cp /usr/share/gnu-config/config.{guess,sub} acconfig/
