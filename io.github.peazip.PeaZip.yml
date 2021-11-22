@@ -3,8 +3,6 @@ runtime: org.kde.Platform
 runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Compat.i386
-  - org.freedesktop.Sdk.Extension.toolchain-i386
   - org.freedesktop.Sdk.Extension.freepascal
 rename-icon: peazip
 rename-desktop-file: peazip.desktop
@@ -27,9 +25,8 @@ add-extensions:
   io.github.peazip.PeaZip.Addon:
     directory: Addon
     merge-dirs: lib;formats;extra
-    add-ld-path: lib
     subdirectories: true
-    no-autodownload: true
+    autodelete: true
 
 build-options:
   env:
@@ -59,7 +56,6 @@ modules:
       # bin
       - mkdir -p $FLATPAK_DEST/bin
       - install -Dm755 -t $PEA_DIR peazip pea
-      - ln -svt $FLATPAK_DEST/bin  $PEA_DIR/peazip
       # res
       - rm -r res/{conf,portable} && cp -r res $PEA_DIR/res
       # dolphin
@@ -104,47 +100,28 @@ modules:
       - /share
     buildsystem: simple
     build-commands:
-      - mkdir  -p $PEA_DIR/res/bin/{7z,zstd,brotli}
+      - mkdir  -p $PEA_DIR/res/bin/{7z,zstd,brotli,upx}
       - ln -vs -t $PEA_DIR/res/bin/7z     /app/lib/p7zip/*
       - ln -vs -t $PEA_DIR/res/bin/zstd   /app/bin/zstd
       - ln -vs -t $PEA_DIR/res/bin/brotli /app/bin/brotli
+      - ln -vs -t $PEA_DIR/res/bin/upx    /app/bin/upx
+      # addon formats
+      - ln -vs -t $PEA_DIR/res/bin $FLATPAK_DEST/Addon/formats/{arc,lpaq,paq,quad,zpaq,unace}
     modules:
       - formats/p7zip.yml
       - formats/zstd.json
       - formats/brotli.json
+      - formats/upx/upx.yml
 
-  - peazip.i386.yml
-
-  - name: peazip-addition-extra
-    only-arches: [x86_64]
-    cleanup:
-      - /include
+  - name: setup
     buildsystem: simple
     build-commands:
-      - mkdir -p $FLATPAK_DEST/Addon
-      - mkdir -p $FLATPAK_DEST/lib/i386-linux-gnu
-      - ln -vs -t $PEA_DIR/res/bin $FLATPAK_DEST/extra/res/{arc,lpaq,paq,quad,upx,zpaq,unace}
-      - install -Dm755 apply_extra -t $FLATPAK_DEST/bin
+      - mkdir   -p $FLATPAK_DEST/Addon
+      - ln      -vst $FLATPAK_DEST/lib $FLATPAK_DEST/Addon/lib/i386-linux-gnu
+      - install -Dvm755 peazip.sh      $FLATPAK_DEST/bin/peazip
     sources:
       - type: script
-        dest-filename: apply_extra
+        dest-filename: peazip.sh
         commands:
-          - 7z x addition.7z > /dev/null
-          - mv peazip* res
-          - rm addition.7z
-
-          - 7z x unace.deb > /dev/null && tar -xf data.tar
-          - install -D -t res/unace usr/local/share/PeaZip/res/unace/*
-          - rm -r usr data.tar unace.deb
-
-      - type: extra-data
-        filename: addition.7z
-        url: https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip_additional_formats_plugin-LINUX-3.7z
-        sha256: 38d94bf794f18d88a0c88f8261614d4948cbb2a6d6b78ebd0cb034704c86e1c4
-        size: 1722938
-
-      - type: extra-data
-        filename: unace.deb
-        url: https://downloads.sourceforge.net/project/peazip/Resources/PeaZip%20UNACE%20Plugin/peazip-unace-plugin-linux_3-2_all.deb
-        sha256: 66f160322820799a7a803aeaf0f73cf367350667ea7f5f76e962de03cf6b0c22
-        size: 203740
+          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
+          - exec /app/lib/peazip/peazip "$@"
