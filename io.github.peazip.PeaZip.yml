@@ -26,6 +26,7 @@ add-extensions:
     directory: Addon/i386
     version: stable
     autodelete: true
+    no-autodownload: false
 
 build-options:
   env:
