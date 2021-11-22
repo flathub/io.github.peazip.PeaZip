@@ -49,6 +49,7 @@ modules:
   - name: peazip
     buildsystem: simple
     build-commands:
+      - mkdir -p /app/bin && ln -s /usr/lib/sdk/freepascal/bin/ppca64 /app/bin/ppcaarch64
       - . /usr/lib/sdk/freepascal/enable.sh && 
         lazbuild --widgetset=qt5 --build-all
           --max-process-count=1 project_pea.lpi project_peach.lpi
