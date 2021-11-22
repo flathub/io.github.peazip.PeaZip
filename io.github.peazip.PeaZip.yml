@@ -28,6 +28,11 @@ add-extensions:
     merge-dirs: lib;formats;extra
     subdirectories: true
     autodelete: true
+    
+  io.github.peazip.PeaZip.Addon.i386:
+    directory: Addon/i386
+    version: stable
+    autodelete: true
 
 build-options:
   env:
@@ -112,7 +117,7 @@ modules:
     modules:
       - formats/p7zip.yml
       - formats/zstd.json
-      - formats/brotli.json
+      - formats/brotli.yml
       - formats/upx/upx.yml
 
   - name: setup
