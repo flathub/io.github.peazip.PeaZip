@@ -24,6 +24,7 @@ finish-args:
 add-extensions:
   io.github.peazip.PeaZip.Addon:
     directory: Addon
+    version: stable
     merge-dirs: lib;formats;extra
     subdirectories: true
     autodelete: true
