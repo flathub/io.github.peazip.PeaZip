@@ -22,13 +22,6 @@ finish-args:
   - --allow=multiarch
 
 add-extensions:
-  io.github.peazip.PeaZip.Addon:
-    directory: Addon
-    version: stable
-    merge-dirs: lib;formats;extra
-    subdirectories: true
-    autodelete: true
-    
   io.github.peazip.PeaZip.Addon.i386:
     directory: Addon/i386
     version: stable
@@ -113,7 +106,7 @@ modules:
       - ln -vs -t $PEA_DIR/res/bin/brotli /app/bin/brotli
       - ln -vs -t $PEA_DIR/res/bin/upx    /app/bin/upx
       # addon formats
-      - ln -vs -t $PEA_DIR/res/bin $FLATPAK_DEST/Addon/formats/{arc,lpaq,paq,quad,zpaq,unace}
+      - ln -vs -t $PEA_DIR/res/bin $FLATPAK_DEST/Addon/i386/formats/{arc,lpaq,paq,quad,zpaq,unace}
     modules:
       - formats/p7zip.yml
       - formats/zstd.json
@@ -123,8 +116,8 @@ modules:
   - name: setup
     buildsystem: simple
     build-commands:
-      - mkdir   -p $FLATPAK_DEST/Addon
-      - ln      -vst $FLATPAK_DEST/lib $FLATPAK_DEST/Addon/lib/i386-linux-gnu
+      - mkdir   -p $FLATPAK_DEST/Addon/i386
+      - ln      -vst $FLATPAK_DEST/lib $FLATPAK_DEST/Addon/i386/lib/i386-linux-gnu
       - install -Dvm755 peazip.sh      $FLATPAK_DEST/bin/peazip
     sources:
       - type: script
