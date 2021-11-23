@@ -5,6 +5,8 @@ make-args:
   - 7za
   - 7zr
   - sfx
+post-install:
+  - cd $FLATPAK_DEST/lib/p7zip && ln -vs 7zCon.sfx 7z.sfx
 cleanup:
   - /man
   - /share
