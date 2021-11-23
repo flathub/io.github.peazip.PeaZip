@@ -49,7 +49,6 @@ modules:
   - name: peazip
     buildsystem: simple
     build-commands:
-      - mkdir -p /app/bin && ln -s /usr/lib/sdk/freepascal/bin/ppca64 /app/bin/ppcaarch64
       - . /usr/lib/sdk/freepascal/enable.sh && 
         lazbuild --widgetset=qt5 --build-all
           --max-process-count=1 project_pea.lpi project_peach.lpi
@@ -67,7 +66,7 @@ modules:
         sed -Ei "s/ (%.)/ @@ \1 @@/g"                                            *.desktop
         sed -i  "s/Icon=peazip/Icon=$FLATPAK_ID/g"                               *.desktop
       # desktop files
-      - install -Dm644 -t $FLATPAK_DEST/share/metainfo                   peazip.appdata.xml 
+      - install -Dm644 -t $FLATPAK_DEST/share/metainfo                   ${FLATPAK_ID}.appdata.xml 
       - | 
         cd res/share/batch/freedesktop_integration
         sed -i "s/Icon=peazip_/Icon=${FLATPAK_ID}./g"                    peazip.desktop
@@ -82,12 +81,14 @@ modules:
         sha256: 9d43dc03a65cb9b1732f185251f5a2067941ad7b28e3272a3d6484d6384c18cb
         x-checker-data:
           type: json
+          is-main-source: true
           url: https://api.github.com/repos/peazip/PeaZip/releases/latest
           version-query: .tag_name
           url-query: .assets[] | select(.name=="peazip-" + $version + ".src.zip")
             | .browser_download_url
+
       - type: file
-        path: peazip.appdata.xml
+        path: io.github.peazip.PeaZip.appdata.xml
 
       - type: script
         dest-filename: install2dolphin.sh
