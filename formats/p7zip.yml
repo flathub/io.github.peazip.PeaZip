@@ -20,5 +20,6 @@ sources:
   - type: shell
     commands:
       - git cherry-pick --no-commit 7ac8f8d3e8a793104e887f67c021eadc419a409f
+        8742a332510396cf15f442f641a467c13e1914e8
       - sed -i 's|/usr/local|/app|g' makefile.common
       - chmod 755 install.sh
