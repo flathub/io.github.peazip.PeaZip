@@ -124,5 +124,5 @@ modules:
       - type: script
         dest-filename: peazip.sh
         commands:
-          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
+          - export TMPDIR="$HOME/.cache"
           - exec /app/lib/peazip/peazip "$@"
