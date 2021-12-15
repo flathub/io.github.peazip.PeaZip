@@ -28,7 +28,7 @@ add-extensions:
 
 build-options:
   env:
-    PEA_DIR: /app/lib/peazip
+    PEA_DIR: /app/peazip
 
 modules:
 #  - shared-modules/gtk2/gtk2.json
@@ -90,7 +90,7 @@ modules:
       - type: script
         dest-filename: install2dolphin.sh
         commands:
-          - PEA_DIR=/app/lib/peazip
+          - PEA_DIR=/app/peazip
           - cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
           - install -vDm644 peazip*.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
 
@@ -100,14 +100,14 @@ modules:
     buildsystem: simple
     build-commands:
       - mkdir  -p $PEA_DIR/res/bin/{7z,zstd,brotli,upx}
-      - ln -vs -t $PEA_DIR/res/bin/7z     /app/lib/p7zip/*
-      - ln -vs -t $PEA_DIR/res/bin/zstd   /app/bin/zstd
-      - ln -vs -t $PEA_DIR/res/bin/brotli /app/bin/brotli
-      - ln -vs -t $PEA_DIR/res/bin/upx    /app/bin/upx
+      - ln -vs -t $PEA_DIR/res/bin/7z     $FLATPAK_DEST/bin/{7z,7zCon.sfx}
+      - ln -vs -t $PEA_DIR/res/bin/zstd   $FLATPAK_DEST/bin/zstd
+      - ln -vs -t $PEA_DIR/res/bin/brotli $FLATPAK_DEST/bin/brotli
+      - ln -vs -t $PEA_DIR/res/bin/upx    $FLATPAK_DEST/bin/upx
       # addon formats
       - ln -vs -t $PEA_DIR/res/bin $FLATPAK_DEST/Addon/i386/formats/{arc,lpaq,paq,quad,zpaq,unace}
     modules:
-      - formats/p7zip.yml
+      - formats/7-zip.yml
       - formats/zstd.json
       - formats/brotli.yml
       - formats/upx/upx.yml
@@ -123,4 +123,4 @@ modules:
         dest-filename: peazip.sh
         commands:
           - export TMPDIR="$HOME/.cache"
-          - exec /app/lib/peazip/peazip "$@"
+          - exec /app/peazip/peazip "$@"
