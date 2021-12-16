@@ -12,5 +12,6 @@ build-commands:
 
 sources:
   - type: archive
+    archive-type: 7z
     url: https://7-zip.org/a/7z2106-src.7z
     sha256: 675eaa90de3c6a3cd69f567bba4faaea309199ca75a6ad12bac731dcdae717ac
