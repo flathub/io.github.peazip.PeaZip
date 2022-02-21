@@ -12,6 +12,5 @@ build-commands:
 
 sources:
   - type: archive
-    dest-filename: 7zip.src.7z
     url: https://7-zip.org/a/7z2107-src.tar.xz
     sha256: 213d594407cb8efcba36610b152ca4921eda14163310b43903d13e68313e1e39
