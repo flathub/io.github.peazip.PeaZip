@@ -11,25 +11,7 @@ build-commands:
   - install -Dm755 CPP/7zip/Bundles/SFXCon/b/g/7zCon $FLATPAK_DEST/bin/7zCon.sfx
 
 sources:
-  - type: file
-    dest-filename: 7zip.src.7z
-    url: https://7-zip.org/a/7z2106-src.7z
-    sha256: 675eaa90de3c6a3cd69f567bba4faaea309199ca75a6ad12bac731dcdae717ac
-  - type: shell
-    commands:
-      - $FLATPAK_DEST/p7zip/7z x 7zip.src.7z -y > /dev/null
-
-modules:
-  - name: p7zip
-    no-autogen: true
-    no-make-install: true
-    make-args:
-      - 7z
-    post-install:
-      - install -Dm755 bin/{7z,7z.so} -t $FLATPAK_DEST/p7zip
-    cleanup:
-      - '*'
-    sources:
-      - type: git
-        url: https://github.com/jinfeihan57/p7zip.git
-        tag: v17.04
+  - type: archive
+    strip-components: 0
+    url: https://7-zip.org/a/7z2107-src.tar.xz
+    sha256: 213d594407cb8efcba36610b152ca4921eda14163310b43903d13e68313e1e39
