@@ -47,8 +47,9 @@ modules:
   - name: peazip
     buildsystem: simple
     build-commands:
-      - . /usr/lib/sdk/freepascal/enable.sh && lazbuild --widgetset=qt5 --build-all
-        --max-process-count=1 project_pea.lpi project_peach.lpi
+      - |
+        . /usr/lib/sdk/freepascal/enable.sh
+        lazbuild --widgetset=qt5 --build-all --max-process-count=1 project_pea.lpi project_peach.lpi
     post-install:
       # bin
       - mkdir -p $FLATPAK_DEST/bin
@@ -56,12 +57,7 @@ modules:
       # res
       - rm -r res/{conf,portable} && cp -r res $PEA_DIR/res
       # dolphin
-      - install -Dm755 install2dolphin.sh              $FLATPAK_DEST/bin/install2dolphin
-      - |
-        cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
-        sed -i  "s/Exec=peazip/Exec=flatpak run --file-forwarding $FLATPAK_ID/g" *.desktop
-        sed -Ei "s/ (%.)/ @@ \1 @@/g"                                            *.desktop
-        sed -i  "s/Icon=peazip/Icon=$FLATPAK_ID/g"                               *.desktop
+      - install -Dm755 install2dolphin.sh $FLATPAK_DEST/bin/install2dolphin
       # desktop files
       - install -Dm644 -t $FLATPAK_DEST/share/metainfo                   ${FLATPAK_ID}.appdata.xml
       - |
@@ -74,8 +70,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: https://github.com/peazip/PeaZip/releases/download/8.5.0/peazip-8.5.0.src.zip
-        sha256: af77933d4fc4e5a577440da496f9e93daa5117494a793f2f81d0863553248205
+        url: https://github.com/peazip/PeaZip/releases/download/8.6.0/peazip-8.6.0.src.zip
+        sha256: a0dd9e5fb45594904e3f2c45dd1077fe4e4ec426471483240ea5b1a8bccd2e1b
         x-checker-data:
           type: json
           is-main-source: true
@@ -93,6 +89,14 @@ modules:
           - PEA_DIR=/app/peazip
           - cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
           - install -vDm644 peazip*.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
+          
+      - type: shell
+        commands:
+          - |
+            cd res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
+            sed -i  "s/Exec=peazip/Exec=flatpak run --file-forwarding $FLATPAK_ID/g" *.desktop
+            sed -Ei "s/ (%.)/ @@ \1 @@/g"                                            *.desktop
+            sed -i  "s/Icon=peazip/Icon=$FLATPAK_ID/g"                               *.desktop
 
   - name: peazip-addition
     cleanup:
