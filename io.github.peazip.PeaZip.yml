@@ -70,8 +70,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: https://github.com/peazip/PeaZip/releases/download/8.6.0/peazip-8.6.0.src.zip
-        sha256: a0dd9e5fb45594904e3f2c45dd1077fe4e4ec426471483240ea5b1a8bccd2e1b
+        url: https://github.com/peazip/PeaZip/releases/download/8.7.0/peazip-8.7.0.src.zip
+        sha256: 40fb0a399164f6af4118329d005ac25847f900f2654a4d5918a0a5c28e3c6ef8
         x-checker-data:
           type: json
           is-main-source: true
@@ -89,7 +89,7 @@ modules:
           - PEA_DIR=/app/peazip
           - cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
           - install -vDm644 peazip*.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
-          
+
       - type: shell
         commands:
           - |
