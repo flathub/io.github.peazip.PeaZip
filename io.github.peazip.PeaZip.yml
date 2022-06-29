@@ -49,11 +49,11 @@ modules:
     build-commands:
       - |
         . /usr/lib/sdk/freepascal/enable.sh
-        lazbuild --widgetset=qt5 --build-all --max-process-count=1 project_pea.lpi project_peach.lpi
+        lazbuild --widgetset=qt5 --build-all --max-process-count=1 dev/project_pea.lpi dev/project_peach.lpi
     post-install:
       # bin
       - mkdir -p $FLATPAK_DEST/bin
-      - install -Dm755 -t $PEA_DIR peazip pea
+      - install -Dm755 -t $PEA_DIR dev/{peazip,pea}
       # res
       - rm -r res/{conf,portable} && cp -r res $PEA_DIR/res
       # dolphin
@@ -70,8 +70,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: https://github.com/peazip/PeaZip/releases/download/8.6.0/peazip-8.6.0.src.zip
-        sha256: a0dd9e5fb45594904e3f2c45dd1077fe4e4ec426471483240ea5b1a8bccd2e1b
+        url: https://github.com/peazip/PeaZip/releases/download/8.7.0/peazip-8.7.0.src.zip
+        sha256: 40fb0a399164f6af4118329d005ac25847f900f2654a4d5918a0a5c28e3c6ef8
         x-checker-data:
           type: json
           is-main-source: true
@@ -89,7 +89,7 @@ modules:
           - PEA_DIR=/app/peazip
           - cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
           - install -vDm644 peazip*.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
-          
+
       - type: shell
         commands:
           - |
@@ -103,6 +103,7 @@ modules:
       - /share
     buildsystem: simple
     build-commands:
+      - rm -rv $PEA_DIR/res/bin/*
       - mkdir  -p $PEA_DIR/res/bin/{7z,zstd,brotli,upx}
       - ln -vs -t $PEA_DIR/res/bin/7z     $FLATPAK_DEST/bin/{7z,7zCon.sfx}
       - ln -vs -t $PEA_DIR/res/bin/zstd   $FLATPAK_DEST/bin/zstd
