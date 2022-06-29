@@ -49,11 +49,11 @@ modules:
     build-commands:
       - |
         . /usr/lib/sdk/freepascal/enable.sh
-        lazbuild --widgetset=qt5 --build-all --max-process-count=1 project_pea.lpi project_peach.lpi
+        lazbuild --widgetset=qt5 --build-all --max-process-count=1 dev/project_pea.lpi dev/project_peach.lpi
     post-install:
       # bin
       - mkdir -p $FLATPAK_DEST/bin
-      - install -Dm755 -t $PEA_DIR peazip pea
+      - install -Dm755 -t $PEA_DIR dev/{peazip,pea}
       # res
       - rm -r res/{conf,portable} && cp -r res $PEA_DIR/res
       # dolphin
