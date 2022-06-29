@@ -103,6 +103,7 @@ modules:
       - /share
     buildsystem: simple
     build-commands:
+      - rm -rv $PEA_DIR/res/bin/*
       - mkdir  -p $PEA_DIR/res/bin/{7z,zstd,brotli,upx}
       - ln -vs -t $PEA_DIR/res/bin/7z     $FLATPAK_DEST/bin/{7z,7zCon.sfx}
       - ln -vs -t $PEA_DIR/res/bin/zstd   $FLATPAK_DEST/bin/zstd
