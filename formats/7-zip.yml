@@ -13,5 +13,5 @@ build-commands:
 sources:
   - type: archive
     strip-components: 0
-    url: https://7-zip.org/a/7z2201-src.tar.xz
-    sha256: 393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5
+    url: https://7-zip.org/a/7z2301-src.tar.xz
+    sha256: 356071007360e5a1824d9904993e8b2480b51b570e8c9faf7c0f58ebe4bf9f74
