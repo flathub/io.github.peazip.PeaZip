@@ -48,6 +48,7 @@ modules:
     build-commands:
       - |
         . /usr/lib/sdk/freepascal/enable.sh
+        lazbuild --add-package dev/metadarkstyle/metadarkstyle.lpk
         lazbuild --widgetset=qt5 --build-all --max-process-count=1 dev/project_pea.lpi dev/project_peach.lpi
     post-install:
       # bin
