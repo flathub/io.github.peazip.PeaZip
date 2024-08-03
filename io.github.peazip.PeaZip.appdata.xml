@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+https://dl.flathub.org/media<?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.peazip.PeaZip</id>
   
   <name>PeaZip</name>
-  <summary>Free file archiver utility, open, extract RAR TAR ZIP archives</summary>
+  <summary>Free file archiver utilitys</summary>
   <developer_name>peazip_software</developer_name>
 
   <url type="homepage">https://peazip.github.io/</url>
@@ -29,18 +29,8 @@
   </description>
   
   <launchable type="desktop-id">io.github.peazip.PeaZip.desktop</launchable>
-  <screenshots>
-    <screenshot type="default">
-      <image>https://github.com/flathub/io.github.peazip.PeaZip/raw/master/screenshots/peazip.png</image>
-    </screenshot>
-    <screenshot>
-      <image>https://github.com/flathub/io.github.peazip.PeaZip/raw/master/screenshots/archive.png</image>
-    </screenshot>
-    <screenshot>
-      <image>https://github.com/flathub/io.github.peazip.PeaZip/raw/master/screenshots/extract.png</image>
-    </screenshot>
-  </screenshots>
     <releases>
+    <release version="9.9.0" date="2024-08-03"/>
     <release version="9.8.0" date="2024-02-14"/>
     <release version="9.7.1" date="2024-02-14"/>
     <release version="9.6.0" date="2023-12-16"/>
@@ -67,3 +57,4 @@
   </releases>
   <content_rating type="oars-1.1"/>
 </component>
+
