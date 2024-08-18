@@ -16,15 +16,11 @@
   
   <description>
     <p>
-      PeaZip is free file archiver utility, based on Open Source technologies of 
-      7-Zip, p7zip, Brotli, FreeArc, PAQ, Zstandard, and PEA projects.
+      PeaZip is a free, Open Source archive manager utility.
     </p>
     <p>
-      Cross-platform, full-featured but user-friendly alternative to WinRar, WinZip 
-      and similar general purpose archive manager applications, open and extract 
-      200+ archive formats: 001, 7Z, ACE, ARC, ARJ, BR, BZ2, CAB, DMG, GZ, ISO, LHA, 
-      PAQ, PEA, RAR, TAR, UDF, WIM, XZ, ZIP, ZIPX, ZST - view full list of supported 
-      archive file formats for archiving and for extraction.
+      User-friendly alternative to WinRar, WinZip and similar apps, open and extract 
+      7Z, RAR, TAR, XZ, ZIP files, and many more archive formats.
     </p>
   </description>
   
@@ -43,6 +39,11 @@
       <caption>Extract archive</caption>
     </screenshot>
   </screenshots>
+<branding>
+  <color type="primary" scheme_preference="light">#C0FFC0</color>
+  <color type="primary" scheme_preference="dark">#008000</color>
+</branding>
+  
     <releases>
     <release version="9.9.1" date="2024-08-18">
       <description></description>
