@@ -48,7 +48,6 @@ modules:
     build-commands:
       - |
         . /usr/lib/sdk/freepascal/enable.sh
-        lazbuild --add-package dev/dragdropfilesdll/DragDropLazarus.lpk
         lazbuild --add-package dev/metadarkstyle/metadarkstyle.lpk
         lazbuild --widgetset=qt5 --build-all --max-process-count=1 dev/project_pea.lpi dev/project_peach.lpi
     post-install:
@@ -72,9 +71,9 @@ modules:
     sources:
       - type: archive
 
-        url: https://github.com/peazip/PeaZip/releases/download/9.9.0/peazip-9.9.0.src.zip
+        url: https://github.com/peazip/PeaZip/releases/download/9.9.1/peazip-9.9.1.src.zip
 
-        sha256: 1be24e7036f5fd0b9935cc9fdd6ec57f31402f4c9566df2cf1f34945a65a0fbc
+        sha256: 98ee74127bfc8ff1a8920a05f9fe1a61c319d754fa67214464ea656b90ac574f
         x-checker-data:
           type: json
           is-main-source: true
