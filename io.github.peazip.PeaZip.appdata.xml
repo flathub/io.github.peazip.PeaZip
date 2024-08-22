@@ -23,6 +23,11 @@
       7Z, RAR, TAR, XZ, ZIP files, and many more archive formats.
     </p>
   </description>
+
+<branding>
+  <color type="primary" scheme_preference="light">#ddffaa</color>
+  <color type="primary" scheme_preference="dark">#3336600</color>
+</branding>
   
   <launchable type="desktop-id">io.github.peazip.PeaZip.desktop</launchable>
   <screenshots>
@@ -39,10 +44,6 @@
       <caption>Extract archive</caption>
     </screenshot>
   </screenshots>
-<branding>
-  <color type="primary" scheme_preference="light">#C0FFC0</color>
-  <color type="primary" scheme_preference="dark">#008000</color>
-</branding>
   
     <releases>
     <release version="9.9.1" date="2024-08-18">
