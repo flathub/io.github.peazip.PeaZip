@@ -16,12 +16,13 @@
   
   <description>
     <p>
-      PeaZip is a free, Open Source archive manager utility.
+      PeaZip is a free, Open Source (LGPLv3) archive manager utility for BSD, Linux, 
+      macOS and Windows.
     </p>
     <p>
-      User-friendly alternative to WinRar, WinZip and similar apps: create, convert
-      open and extract 7Z, Brotli, BZip2, GZip, RAR, TAR, XZ, ZIP, ZPAQ, Zstandard 
-      files, and many more archive formats.
+      Cross-platform, desktop-agnostic alternative to 7-Zip, FileRoller, WinRar, WinZip 
+      and similar apps: create, convert open and extract 7Z, Brotli, BZip2, GZip, RAR, 
+      TAR, XZ, ZIP, ZPAQ, Zstandard files, and many more archive formats.
     </p>
     <p>
       PeaZip also supports encrypting / decrypting archives (with optional two factor
@@ -31,7 +32,7 @@
   </description>
 
   <branding>
-  <color type="primary" scheme_preference="light">#ddffaa</color>
+  <color type="primary" scheme_preference="light">#88dd00</color>
   <color type="primary" scheme_preference="dark">#336600</color>
 </branding>
   
@@ -52,12 +53,8 @@
   </screenshots>
   
     <releases>
-    <release version="10.0.0" date="2024-10-26">
-      <description></description>
-    </release>
-    <release version="9.9.1" date="2024-08-18">
-      <description/>
-    </release>
+    <release version="10.0.0" date="2024-10-26"/>
+    <release version="9.9.1" date="2024-08-18"/>
     <release version="9.9.0" date="2024-08-03"/>
     <release version="9.8.0" date="2024-05-15"/>
     <release version="9.7.1" date="2024-02-14"/>
