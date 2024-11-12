@@ -20,14 +20,17 @@
       macOS and Windows.
     </p>
     <p>
-      Cross-platform, desktop-agnostic alternative to 7-Zip, FileRoller, WinRar, WinZip 
-      and similar apps: create, convert open and extract 7Z, Brotli, BZip2, GZip, RAR, 
-      TAR, XZ, ZIP, ZPAQ, Zstandard files, and many more archive formats.
+      Cross-platform, desktop-agnostic GUI archive manager based on Open Source technologies 
+      of 7-Zip / p7zip, Zstandard, Brotli, ZPAQ, PEA, and other Free Software file compression 
+      tools, alternative to 7-Zip, Engrampa, FileRoller, Keka, WinRar, WinZip and similar apps.
     </p>
     <p>
-      PeaZip also supports encrypting / decrypting archives (with optional two factor
-      authentication), and its scripting engine makes easy to export the tasks defined 
-      in the GUI as CLI scripts.
+      Create, convert open and extract 7Z, Brotli, BZip2, GZip, PEA, RAR, TAR, XZ, ZIP, 
+      ZPAQ, Zstandard files, and many more (200+) archive formats.
+    </p>
+    <p>
+      PeaZip supports encryption / decryption of archives (with optional two factor authentication), 
+      and its scripting engine makes easy to export the tasks defined in the GUI as CLI scripts.
     </p>
   </description>
 
