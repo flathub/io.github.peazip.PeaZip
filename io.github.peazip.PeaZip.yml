@@ -71,9 +71,9 @@ modules:
     sources:
       - type: archive
 
-        url: https://github.com/peazip/PeaZip/releases/download/10.0.0/peazip-10.0.0.src.zip
+        url: https://github.com/peazip/PeaZip/releases/download/10.1.0/peazip-10.1.0.src.zip
 
-        sha256: 2aa9e1a88d8ac832bc43b82b6b3c6fc6a7111914e47c758c36034cabc0c1f7f4
+        sha256: 96fa3fd661d8609379f3a8485be1dbee6dfa334810d6e662225de1b86f09f6af
         x-checker-data:
           type: json
           is-main-source: true
