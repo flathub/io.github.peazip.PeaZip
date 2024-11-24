@@ -8,7 +8,7 @@ rename-icon: peazip
 rename-desktop-file: peazip.desktop
 command: peazip
 finish-args:
-  - --socket=x11
+  - --socket=wayland
   - --device=dri
   - --share=ipc
   - --filesystem=host
@@ -32,7 +32,7 @@ build-options:
 modules:
 #  - shared-modules/gtk2/gtk2.json
 
-  - name: qt5pas
+  - name: qt6pas
     config-opts:
       - -after
       - target.path=/app/lib
@@ -40,7 +40,7 @@ modules:
     sources:
       - type: shell
         commands:
-          - cp -r /usr/lib/sdk/freepascal/share/lazarus/lcl/interfaces/qt5/cbindings/.
+          - cp -r /usr/lib/sdk/freepascal/share/lazarus/lcl/interfaces/qt6/cbindings/.
             .
 
   - name: peazip
@@ -49,7 +49,7 @@ modules:
       - |
         . /usr/lib/sdk/freepascal/enable.sh
         lazbuild --add-package dev/metadarkstyle/metadarkstyle.lpk
-        lazbuild --widgetset=qt5 --build-all --max-process-count=1 dev/project_pea.lpi dev/project_peach.lpi
+        lazbuild --widgetset=qt6 --build-all --max-process-count=1 dev/project_pea.lpi dev/project_peach.lpi
     post-install:
       # bin
       - mkdir -p $FLATPAK_DEST/bin
