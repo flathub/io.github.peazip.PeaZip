@@ -8,7 +8,8 @@ rename-icon: peazip
 rename-desktop-file: peazip.desktop
 command: peazip
 finish-args:
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --device=dri
   - --share=ipc
   - --filesystem=host
