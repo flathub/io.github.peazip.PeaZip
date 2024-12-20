@@ -4,7 +4,7 @@
   
   <name>PeaZip</name>
   <summary>Free file archiver utility</summary>
-  <developer_name>peazip_software</developer_name>
+  <developer_name>Giorgio Tani</developer_name>
 
   <url type="homepage">https://peazip.github.io/</url>
   <url type="donation">https://peazip.github.io/donations.html</url>
@@ -35,7 +35,7 @@
   </description>
 
   <branding>
-  <color type="primary" scheme_preference="light">#88dd00</color>
+  <color type="primary" scheme_preference="light">#ccff88</color>
   <color type="primary" scheme_preference="dark">#336600</color>
 </branding>
   
