@@ -118,7 +118,7 @@ modules:
       - formats/7-zip.yml
       - formats/zstd.json
       - formats/brotli.yml
-      - formats/upx/upx.yml
+      - formats/upx.yml
 
   - name: setup
     buildsystem: simple
