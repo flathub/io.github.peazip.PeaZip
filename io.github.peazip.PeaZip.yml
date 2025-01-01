@@ -1,6 +1,6 @@
 app-id: io.github.peazip.PeaZip
 runtime: org.kde.Platform
-runtime-version: "6.8"
+runtime-version: '6.8'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.freepascal
@@ -72,9 +72,9 @@ modules:
     sources:
       - type: archive
 
-        url: https://github.com/peazip/PeaZip/releases/download/10.1.0/peazip-10.1.0.src.zip
+        url: https://github.com/peazip/PeaZip/releases/download/10.2.0/peazip-10.2.0.src.zip
 
-        sha256: 96fa3fd661d8609379f3a8485be1dbee6dfa334810d6e662225de1b86f09f6af
+        sha256: 14162e4aacb1371d25a65ef5c10e7cad929c10c6a84ed8672dfcc17ec74fad91
         x-checker-data:
           type: json
           is-main-source: true
