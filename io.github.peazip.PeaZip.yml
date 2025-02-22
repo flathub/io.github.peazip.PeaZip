@@ -65,18 +65,16 @@ modules:
         cd res/share/batch/freedesktop_integration
         sed -i "s/Icon=peazip_/Icon=${FLATPAK_ID}./g"                    peazip.desktop
         desktop-file-install --dir=$FLATPAK_DEST/share/applications      peazip.desktop
-        install -Dm644 -t $FLATPAK_DEST/share/icons/hicolor/256x256/apps peazip.png 
-        cd res/share/batch/freedesktop_integration/additional-desktop-files
-        install -Dm644 -t $FLATPAK_DEST/share/icons/hicolor/256x256/apps peazip_add.png peazip_extract.png
+        install -Dm644 -t $FLATPAK_DEST/share/icons/hicolor/256x256/apps peazip.png peazip_add.png peazip_extract.png
       - rename "peazip_" "${FLATPAK_ID}." $FLATPAK_DEST/share/icons/hicolor/*/*/*.png
     cleanup:
       - /share/lazarus
     sources:
       - type: archive
 
-        url: https://github.com/peazip/PeaZip/releases/download/10.2.0/peazip-10.2.0.src.zip
+        url: https://github.com/peazip/PeaZip/releases/download/10.3.0/peazip-10.3.0.src.zip
 
-        sha256: 14162e4aacb1371d25a65ef5c10e7cad929c10c6a84ed8672dfcc17ec74fad91
+        sha256: c0f2aad9aaaf853d5be6516656db1c9254365a645ed421979bb1a1b97d01265d
         x-checker-data:
           type: json
           is-main-source: true
