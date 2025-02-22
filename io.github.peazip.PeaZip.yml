@@ -65,7 +65,9 @@ modules:
         cd res/share/batch/freedesktop_integration
         sed -i "s/Icon=peazip_/Icon=${FLATPAK_ID}./g"                    peazip.desktop
         desktop-file-install --dir=$FLATPAK_DEST/share/applications      peazip.desktop
-        install -Dm644 -t $FLATPAK_DEST/share/icons/hicolor/256x256/apps peazip.png peazip_add.png peazip_extract.png
+        install -Dm644 -t $FLATPAK_DEST/share/icons/hicolor/256x256/apps peazip.png 
+        cd res/share/batch/freedesktop_integration/additional-desktop-files
+        install -Dm644 -t $FLATPAK_DEST/share/icons/hicolor/256x256/apps peazip_add.png peazip_extract.png
       - rename "peazip_" "${FLATPAK_ID}." $FLATPAK_DEST/share/icons/hicolor/*/*/*.png
     cleanup:
       - /share/lazarus
