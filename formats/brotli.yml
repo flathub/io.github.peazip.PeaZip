@@ -1,11 +1,12 @@
 name: brotli
 buildsystem: cmake
 cleanup:
-  - "*.a"
+  - '*.a'
 sources:
   - type: git
     url: https://github.com/google/brotli.git
     tag: v1.1.0
+    commit: ed738e842d2fbdf2d6459e39267a633c4a9b2f5d
     x-checker-data:
-      - type: git
-        tag-pattern: ^v([\\d.]+)$
+      type: git
+      tag-pattern: ^v([\d.]+)$

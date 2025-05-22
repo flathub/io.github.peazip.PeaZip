@@ -9,5 +9,5 @@ sources:
     commit: 730c6ce6c52158280cc7fc2e4ea73b6c38970eaa
     tag: v5.0.1
     x-checker-data:
-      - type: git
-        tag-pattern: ^v([\\d.]+)$
+      type: git
+      tag-pattern: ^v([\d.]+)$
