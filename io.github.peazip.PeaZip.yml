@@ -72,9 +72,9 @@ modules:
     sources:
       - type: archive
 
-        url: https://github.com/peazip/PeaZip/releases/download/10.4.0/peazip-10.4.0.src.zip
+        url: https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.src.zip
 
-        sha256: 32d3298437d3425591cd8024e85dc6b82093ebefb37bc64e9dc036e1491c105c
+        sha256: ede6593461ba93ef2bcfdc0f880d576fc65fc8ede466ab4fe8955ac2700d5aab
         x-checker-data:
           type: json
           is-main-source: true
@@ -118,7 +118,7 @@ modules:
       - formats/7-zip.yml
       - formats/zstd.json
       - formats/brotli.yml
-      - formats/upx.yml
+     
 
   - name: setup
     buildsystem: simple
