@@ -1,6 +1,6 @@
 app-id: io.github.peazip.PeaZip
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.freepascal
@@ -18,21 +18,17 @@ finish-args:
   - --talk-name=com.canonical.AppMenu.Registrar
   # i386
   - --allow=multiarch
-
 add-extensions:
   io.github.peazip.PeaZip.Addon.i386:
     directory: Addon/i386
     version: stable
     autodelete: true
     no-autodownload: false
-
 build-options:
   env:
     PEA_DIR: /app/peazip
 
 modules:
-#  - shared-modules/gtk2/gtk2.json
-
   - name: qt6pas
     config-opts:
       - -after
@@ -41,8 +37,7 @@ modules:
     sources:
       - type: shell
         commands:
-          - cp -r /usr/lib/sdk/freepascal/share/lazarus/lcl/interfaces/qt6/cbindings/.
-            .
+          - cp -r /usr/lib/sdk/freepascal/share/lazarus/lcl/interfaces/qt6/cbindings/. .
 
   - name: peazip
     buildsystem: simple
@@ -71,9 +66,7 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-
         url: https://github.com/peazip/PeaZip/releases/download/10.7.0/peazip-10.7.0.src.zip
-
         sha256: 87d53a08de2721d09f6224c675c5ca4a72a2ec2d7e853013f77016c4af2d7437
         x-checker-data:
           type: json
