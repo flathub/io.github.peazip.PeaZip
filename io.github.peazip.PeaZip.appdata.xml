@@ -10,6 +10,9 @@
   <url type="donation">https://peazip.github.io/donations.html</url>
   <url type="faq">https://peazip.github.io/peazip-help-faq.html</url>
   <url type="help">https://peazip.github.io/peazip-help.html</url>
+  <url type="translate">https://peazip.github.io/peazip-translations.html</url>
+  <url type="bugtracker">https://peazip.github.io/peazip-more.html</url>
+  <url type="vcs-browser">https://peazip.github.io/peazip-sources.html</url>
 
   <metadata_license>FTL</metadata_license>
   <project_license>LGPL-3.0-only</project_license>
