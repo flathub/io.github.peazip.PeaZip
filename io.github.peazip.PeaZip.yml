@@ -83,13 +83,13 @@ modules:
         dest-filename: install2dolphin.sh
         commands:
           - PEA_DIR=/app/peazip
-          - cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
-          - install -vDm644 peazip*.desktop -t "${HOME}/.local/share/kservices5/ServiceMenus"
+          - cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin
+          - install -vDm644 peazip-kde6.desktop -t "${HOME}/.local/share/kio/servicemenus"
 
       - type: shell
         commands:
           - |
-            cd res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
+            cd res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin
             sed -i  "s/Exec=peazip/Exec=flatpak run --file-forwarding $FLATPAK_ID/g" *.desktop
             sed -Ei "s/ (%.)/ @@ \1 @@/g"                                            *.desktop
             sed -i  "s/Icon=peazip/Icon=$FLATPAK_ID/g"                               *.desktop
