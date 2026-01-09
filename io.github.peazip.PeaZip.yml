@@ -84,7 +84,7 @@ modules:
         commands:
           - PEA_DIR=/app/peazip
           - cd $PEA_DIR/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin
-          - install -vDm644 peazip*.desktop -t "${HOME}/.local/share/kio/servicemenus"
+          - install -Dvm755 peazip*.desktop -t "${HOME}/.local/share/kio/servicemenus"
 
       - type: shell
         commands:
