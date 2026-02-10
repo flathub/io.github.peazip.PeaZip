@@ -28,11 +28,15 @@
       tools, alternative to 7-Zip, Engrampa, FileRoller, Keka, WinRar, WinZip and similar apps.
     </p>
     <p>
-      Create, convert open and extract 7Z, Brotli, BZip2, GZip, PEA, RAR, TAR, XZ, ZIP, 
-      ZPAQ, Zstandard files, and many more (200+) archive formats.
+      Create, convert, open and extract 7Z, Brotli, BZip2, GZip, PEA, RAR, TAR, XZ, ZIP, 
+      ZPAQ, Zstd files, and many more (200+) archive formats. 
     </p>
     <p>
-      PeaZip supports encryption / decryption of archives (with optional two factor authentication), 
+      The integrated file manager provides bookmarking, tabbed browsing, search, instant content 
+      filter, duplicate files detection, and text, hex, and image viewers.
+    </p>
+    <p>
+      PeaZip supports encryption / decryption of archives, with optional two factor authentication, 
       and its scripting engine makes easy to export the tasks defined in the GUI as CLI scripts.
     </p>
   </description>
