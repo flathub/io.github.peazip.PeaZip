@@ -18,6 +18,11 @@ finish-args:
   - --talk-name=com.canonical.AppMenu.Registrar
   # i386
   - --allow=multiarch
+cleanup:
+- /include
+- /lib/pkgconfig
+- /share/man
+
 add-extensions:
   io.github.peazip.PeaZip.Addon.i386:
     directory: Addon/i386
