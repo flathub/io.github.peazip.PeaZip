@@ -107,14 +107,20 @@ modules:
       - rm -rv $PEA_DIR/res/bin/*
       - mkdir  -p $PEA_DIR/res/bin/{7z,zstd,brotli,upx}
       - ln -vs -t $PEA_DIR/res/bin/7z     $FLATPAK_DEST/bin/{7z,7zCon.sfx}
-      - ln -vs -t $PEA_DIR/res/bin/zstd   $FLATPAK_DEST/bin/zstd
+      - ln -vs -t $PEA_DIR/res/bin/zstd   /usr/bin/zstd
       - ln -vs -t $PEA_DIR/res/bin/brotli $FLATPAK_DEST/bin/brotli
       - ln -vs -t $PEA_DIR/res/bin/upx    $FLATPAK_DEST/bin/upx
       # addon formats
       - ln -vs -t $PEA_DIR/res/bin $FLATPAK_DEST/Addon/i386/formats/{arc,lpaq,paq,quad,zpaq,unace}
+      # get the zstd binaries from runtime, as links
+      - ln -vs /usr/bin/unzstd      $FLATPAK_DEST/bin/unzstd
+      - ln -vs /usr/bin/zstd        $FLATPAK_DEST/bin/zstd
+      - ln -vs /usr/bin/zstdcat     $FLATPAK_DEST/bin/zstdcat
+      - ln -vs /usr/bin/zstdgrep    $FLATPAK_DEST/bin/zstdgrep
+      - ln -vs /usr/bin/zstdless    $FLATPAK_DEST/bin/zstdless
+      - ln -vs /usr/bin/zstdmt      $FLATPAK_DEST/bin/zstdmt
     modules:
       - formats/7-zip.yml
-      - formats/zstd.json
       - formats/brotli.yml
       - formats/upx.yml
 
