@@ -8,6 +8,7 @@ build-commands:
       popd
     done
   - install -Dm755 CPP/7zip/Bundles/Alone2/b/g/7zz   $FLATPAK_DEST/bin/7z
+  - install -Dm755 DOC/{copying.txt,License.txt,unRarLicense.txt} -t $FLATPAK_DEST/share/licenses/$FLATPAK_ID/7-zip/
 
 
 sources:
