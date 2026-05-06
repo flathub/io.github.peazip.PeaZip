@@ -59,6 +59,8 @@ modules:
       - rm -r res/{conf,portable} && cp -r res $PEA_DIR/res
       # dolphin
       - install -Dm755 install2dolphin.sh $FLATPAK_DEST/bin/install2dolphin
+      # license
+      - install -Dm644 res/share/copying/copying.txt -t $FLATPAK_DEST/share/licenses/$FLATPAK_ID/peazip/
       # desktop files
       - install -Dm644 -t $FLATPAK_DEST/share/metainfo                   ${FLATPAK_ID}.appdata.xml
       - |
