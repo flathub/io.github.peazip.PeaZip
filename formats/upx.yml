@@ -6,8 +6,8 @@ build-commands:
 sources:
   - type: git
     url: https://github.com/upx/upx.git
-    commit: 034b6d0d81c53998c07ad6f34bfead6f5c5445ce
-    tag: v5.2.0
+    commit: b4bdabf638ab6e3715a292182a9c613a4716d7c5
+    tag: v5.2.1
     x-checker-data:
       type: git
       tag-pattern: ^v([\d.]+)$
