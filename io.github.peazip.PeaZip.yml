@@ -75,8 +75,8 @@ modules:
       - /share/lazarus
     sources:
       - type: archive
-        url: https://github.com/peazip/PeaZip/releases/download/11.2.0/peazip-11.2.0.src.zip
-        sha256: 9df7c9fa27b6acf898598162105d07cfd2c07677dddefacb64e66430f3ebf131
+        url: https://github.com/peazip/PeaZip/releases/download/11.3.0/peazip-11.3.0.src.zip
+        sha256: 17e85e62a3b526a03347186465ff4a79f8117311e9efe0c432e968bd98e612cb
         x-checker-data:
           type: json
           is-main-source: true
